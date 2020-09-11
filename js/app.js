@@ -95,4 +95,31 @@ function deleteTweet() {
 let deleteButton = document.getElementById("tweet-delete");
 deleteButton.addEventListener("click", deleteTweet);
 
+
+
 // GET
+function showTweets() {
+    let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                let showPosts = (JSON.parse(this.responseText));
+                for(i = 0; i < showPosts.length; i++) {
+                    let allTitles = document.getElementById("posts-container").innerHTML += "<h3 id='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p id='post-content'>" + showPosts[i].body + "</p>";
+                    document.getElementById("post-result").innerHTML = "All Posts!";
+                };
+            } else if (this.readyState != 4) {
+                document.getElementById("post-result").innerHTML = "Hold up! We're Loading...";
+            } else {
+                document.getElementById("post-result").innerHTML = "*WOMP, WOMP* Your message did not post, please try again.";
+            }
+        };
+
+        ajax.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+        ajax.setRequestHeader("Content-Type", "application/json");
+        ajax.send();
+}
+
+showTweets();
+
+
+// BONUS - COMMENTS

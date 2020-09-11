@@ -10,20 +10,51 @@ body {
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
+  text-align: center;
   margin: 5vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 #header-content {
   margin: 5vh;
+  font-size: 24px;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+#title-tweet {
+  color: darkcyan;
 }
 
 #body, #title {
   padding: 2vh 0vh 2vh 0vh;
+  font-size: 20px;
 }
 
 #tweet-submit, #tweet-update, #tweet-delete {
-  margin: 2vh 0vh 2vh 0vh;
-  width: 30%;
+  margin: 4vh 0vh 2vh 0vh;
+  width: 40%;
   padding: 5px;
+  background-color: #00a1a1;
+  font-size: 18px;
+  -webkit-box-shadow: 1px 0px 3px darkslategrey;
+          box-shadow: 1px 0px 3px darkslategrey;
+}
+
+#post-result {
+  margin: 5vh;
+  font-size: 28px;
+}
+
+#posts-container {
+  border: 1px solid black;
+}
+
+#post-title {
+  margin: 20px 0px 0px 0px;
+}
+
+#post-content {
+  margin: 5px 0px 50px 0px;
 }
 /*# sourceMappingURL=style.css.map */
