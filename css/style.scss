@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin: 5vh;
+}
+
+#header-content {
+    margin: 5vh;
+}
+
+#body, #title {
+    padding: 2vh 0vh 2vh 0vh;
+}
+
+#tweet-submit, #tweet-update {
+    margin: 2vh 0vh 2vh 0vh;
+    width: 30%;
+    padding: 5px;
+}
+
