@@ -1,4 +1,4 @@
-// POST
+// POST - CREATING TWEET
 function sendTweet() {
     let tweetTitle = document.getElementById("title-input").value;
     let tweetBody = document.getElementById("body-input").value;
@@ -31,7 +31,7 @@ tweetButton.addEventListener("click", sendTweet);
 
 
 
-// PATCH
+// PATCH - UPDATING TWEET
 function updateTweet() {
     let tweetTitle = document.getElementById("title-input").value;
     let tweetBody = document.getElementById("body-input").value;
@@ -64,7 +64,7 @@ updateButton.addEventListener("click", updateTweet);
 
 
 
-// DELETE
+// DELETE - DELETING TWEET
 function deleteTweet() {
     let tweetTitle = document.getElementById("title-input").value;
     let tweetBody = document.getElementById("body-input").value;
@@ -97,14 +97,15 @@ deleteButton.addEventListener("click", deleteTweet);
 
 
 
-// GET
+
+// GET - SHOWING ALL TWEETS
 function showTweets() {
     let ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 let showPosts = (JSON.parse(this.responseText));
                 for(i = 0; i < showPosts.length; i++) {
-                    let allTitles = document.getElementById("posts-container").innerHTML += "<h3 id='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p id='post-content'>" + showPosts[i].body + "</p>";
+                    document.getElementById("posts-container").innerHTML += "<h3 id='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p id='post-content'>" + showPosts[i].body + "</p>";
                     document.getElementById("post-result").innerHTML = "All Posts!";
                 };
             } else if (this.readyState != 4) {
@@ -113,7 +114,6 @@ function showTweets() {
                 document.getElementById("post-result").innerHTML = "*WOMP, WOMP* Your message did not post, please try again.";
             }
         };
-
         ajax.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
         ajax.setRequestHeader("Content-Type", "application/json");
         ajax.send();
@@ -122,4 +122,17 @@ function showTweets() {
 showTweets();
 
 
-// BONUS - COMMENTS
+
+// BONUS - SHOWING ALL COMMENTS (I TRIED REAL HARD, Alex.)
+function showComments() {
+    let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                let comment = (JSON.parse(this.responseText));
+                document.getElementById("comments-container").innerHTML += "<h3 id='comments-name'>" + comment.name + "</h3>" + "<h4 id='comment-email'>" + comment.email + "</h4>"; + "<p id='comment-body'>" + comment.body + "</p>";
+            }
+        }
+        ajax.open("GET", "https://jsonplaceholder.typicode.com/posts/1/comments", true);
+        ajax.setRequestHeader("Content-Type", "application/json");
+        ajax.send(); 
+};
