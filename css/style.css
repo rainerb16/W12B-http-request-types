@@ -21,7 +21,7 @@ body {
   padding: 2vh 0vh 2vh 0vh;
 }
 
-#tweet-submit, #tweet-update {
+#tweet-submit, #tweet-update, #tweet-delete {
   margin: 2vh 0vh 2vh 0vh;
   width: 30%;
   padding: 5px;
