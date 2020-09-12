@@ -50,11 +50,11 @@ body {
   border: 1px solid black;
 }
 
-#post-title {
+.post-title {
   margin: 20px 0px 0px 0px;
 }
 
-#post-content {
+.post-content {
   margin: 5px 0px 50px 0px;
 }
 /*# sourceMappingURL=style.css.map */

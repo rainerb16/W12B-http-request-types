@@ -105,8 +105,9 @@ function showTweets() {
             if(this.readyState == 4 && this.status == 200) {
                 let showPosts = (JSON.parse(this.responseText));
                 for(i = 0; i < showPosts.length; i++) {
-                    document.getElementById("posts-container").innerHTML += "<h3 id='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p id='post-content'>" + showPosts[i].body + "</p>";
+                    document.getElementById("posts-container").innerHTML += "<h3 class='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p class='post-content'>" + showPosts[i].body + "</p>";
                     document.getElementById("post-result").innerHTML = "All Posts!";
+                    // showComments();
                 };
             } else if (this.readyState != 4) {
                 document.getElementById("post-result").innerHTML = "Hold up! We're Loading...";
@@ -129,7 +130,7 @@ function showComments() {
         ajax.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 let comment = (JSON.parse(this.responseText));
-                document.getElementById("comments-container").innerHTML += "<h3 id='comments-name'>" + comment.name + "</h3>" + "<h4 id='comment-email'>" + comment.email + "</h4>"; + "<p id='comment-body'>" + comment.body + "</p>";
+                document.getElementById("comments-container").innerHTML += "<h3 class='comments-name'>" + comment.name + "</h3>" + "<h4 class='comment-email'>" + comment.email + "</h4>"; + "<p class='comment-body'>" + comment.body + "</p>";
             }
         }
         ajax.open("GET", "https://jsonplaceholder.typicode.com/posts/1/comments", true);
