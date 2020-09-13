@@ -13,11 +13,11 @@ function sendTweet() {
     ajax.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 201) {
             console.log(JSON.parse(this.responseText));
-            document.getElementById("post-result").innerHTML = "*Dab* Your message has been posted!";
+            document.getElementById("post-result").innerHTML = "Your message has been posted!";
         } else if (this.readyState != 4) {
             document.getElementById("post-result").innerHTML = "Hold up! We're Loading...";
         } else {
-            document.getElementById("post-result").innerHTML = "*WOMP, WOMP* Your message did not post, please try again.";
+            document.getElementById("post-result").innerHTML = "Your message did not post, please try again.";
         }
     };
 
@@ -28,6 +28,8 @@ function sendTweet() {
 
 let tweetButton = document.getElementById("tweet-submit");
 tweetButton.addEventListener("click", sendTweet);
+
+
 
 
 
@@ -50,7 +52,7 @@ function updateTweet() {
             } else if (this.readyState != 4) {
                 document.getElementById("post-result").innerHTML = "Hold up! We're Loading...";
             } else {
-                document.getElementById("post-result").innerHTML = "*WOMP, WOMP* Your message did not post, please try again.";
+                document.getElementById("post-result").innerHTML = "Your message did not post, please try again.";
             }
         };
 
@@ -61,6 +63,8 @@ function updateTweet() {
 
 let updateButton = document.getElementById("tweet-update");
 updateButton.addEventListener("click", updateTweet);
+
+
 
 
 
@@ -83,7 +87,7 @@ function deleteTweet() {
             } else if (this.readyState != 4) {
                 document.getElementById("post-result").innerHTML = "Hold up! We're Loading...";
             } else {
-                document.getElementById("post-result").innerHTML = "*WOMP, WOMP* Your message did not post, please try again.";
+                document.getElementById("post-result").innerHTML = "Your message did not post, please try again.";
             }
         };
 
@@ -98,6 +102,8 @@ deleteButton.addEventListener("click", deleteTweet);
 
 
 
+
+
 // GET - SHOWING ALL TWEETS
 function showTweets() {
     let ajax = new XMLHttpRequest();
@@ -107,15 +113,13 @@ function showTweets() {
                 let postElement = document.getElementById("posts-container");
                 
                 for(i = 0; i < showPosts.length; i++) {
-                    postElement.innerHTML += "<h3 class='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p class='post-content'>" + showPosts[i].body + "</p>";
+                    let post = document.createElement("div");
+                    post.innerHTML += "<h3 class='post-title'><u>" + showPosts[i].title + "</u></h3>" + "<p class='post-content'>" + showPosts[i].body + "</p>";
                     let comments = document.createElement("div");
                     showComments(showPosts[i].id, comments);
-                    postElement.appendChild(comments);
+                    post.appendChild(comments);
+                    postElement.appendChild(post);
                 };
-            } else if (this.readyState != 4) {
-                document.getElementById("post-result").innerHTML = "Hold up! We're Loading...";
-            } else {
-                document.getElementById("post-result").innerHTML = "*WOMP, WOMP* Your message did not post, please try again.";
             }
         };
         ajax.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
@@ -127,22 +131,29 @@ showTweets();
 
 
 
+
+
 // BONUS - SHOWING ALL COMMENTS (I TRIED REAL HARD, Alex.)
 function showComments(id, comments) {
     let ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function() {
+            let commentDiv = document.createElement("div");
             if(this.readyState == 4 && this.status == 200) {
                 let tweetComments = (JSON.parse(this.responseText));
-                for(i = 0; i < tweetComments; i++) {
-                    let commentDiv = document.createElement("div");
-                    commentDiv.innerHTML = "<h1>" + tweetComments[i].name + "</h1>" + "<h1>" + tweetComments[i].body + "</h1>"; 
+
+                for(i = 0; i < tweetComments.length; i++) {
+                    commentDiv.innerHTML = "<p>Comment: " + "<br>" + "<u>" + tweetComments[i].name + "</u></p>" + "<p>" + tweetComments[i].body + "</p>"; 
                     comments.appendChild(commentDiv);
                     console.log(comments);
                 }
+            } else if (this.readyState != 4) {
+                document.getElementById("post-result").innerHTML = "";
+            } else {
+                document.getElementById("post-result").innerHTML = "Your message did not post, please try again.";
             }
         }
         ajax.open("GET", "https://jsonplaceholder.typicode.com/posts/" + id + "/comments" , true);
-        // ajax.setRequestHeader("Content-Type", "application/json");
+        ajax.setRequestHeader("Content-Type", "application/json");
         ajax.send(); 
 };
 

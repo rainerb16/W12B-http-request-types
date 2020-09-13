@@ -10,7 +10,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
-  text-align: center;
   margin: 5vh;
   font-family: 'Roboto', sans-serif;
 }
@@ -31,6 +30,14 @@ body {
   font-size: 20px;
 }
 
+#body-content {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
 #tweet-submit, #tweet-update, #tweet-delete {
   margin: 4vh 0vh 2vh 0vh;
   width: 40%;
@@ -47,14 +54,21 @@ body {
 }
 
 #posts-container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  justify-items: center;
   border: 1px solid black;
+  row-gap: 30px;
 }
 
 .post-title {
-  margin: 20px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
 }
 
 .post-content {
-  margin: 5px 0px 50px 0px;
+  margin: 5px 0px 15px 0px;
 }
 /*# sourceMappingURL=style.css.map */
