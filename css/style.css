@@ -56,19 +56,17 @@ body {
 #posts-container {
   display: -ms-grid;
   display: grid;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
-  justify-items: center;
   border: 1px solid black;
   row-gap: 30px;
 }
 
-.post-title {
-  margin: 5px 0px 0px 0px;
+#posts-container #comment-container {
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
 }
 
-.post-content {
-  margin: 5px 0px 15px 0px;
+#posts-container .post-title, #posts-container .post-content, #posts-container .comment-title, #posts-container .comment-body {
+  padding: 10px;
 }
 /*# sourceMappingURL=style.css.map */

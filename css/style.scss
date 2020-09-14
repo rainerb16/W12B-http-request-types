@@ -50,16 +50,15 @@ body {
 
 #posts-container {
     display: grid;
-    align-items: left;
-    justify-items: center;
     border: 1px solid black;
     row-gap: 30px;
+
+    #comment-container {
+        align-items: left;
+    }
+
+    .post-title, .post-content, .comment-title, .comment-body {
+        padding: 10px;
+    }
 }
 
-.post-title {
-    margin: 5px 0px 0px 0px;
-}
-
-.post-content {
-    margin: 5px 0px 15px 0px;
-}

@@ -142,7 +142,7 @@ function showComments(id, comments) {
                 let tweetComments = (JSON.parse(this.responseText));
 
                 for(i = 0; i < tweetComments.length; i++) {
-                    commentDiv.innerHTML = "<p>Comment: " + "<br>" + "<u>" + tweetComments[i].name + "</u></p>" + "<p>" + tweetComments[i].body + "</p>"; 
+                    commentDiv.innerHTML = "<p class='comment-title'><u>Comment:</u>" + "<br>" + tweetComments[i].name + "</p>" + "<p class='comment-body>" + tweetComments[i].body + "</p>"; 
                     comments.appendChild(commentDiv);
                     console.log(comments);
                 }
