@@ -137,13 +137,11 @@ showTweets();
 function showComments(id, comments) {
     let ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function() {
-            let commentDiv = document.createElement("div");
             if(this.readyState == 4 && this.status == 200) {
                 let tweetComments = (JSON.parse(this.responseText));
 
                 for(i = 0; i < tweetComments.length; i++) {
-                    commentDiv.innerHTML = "<p class='comment-title'><u>Comment:</u>" + "<br>" + tweetComments[i].name + "</p>" + "<p class='comment-body>" + tweetComments[i].body + "</p>"; 
-                    comments.appendChild(commentDiv);
+                    comments.innerHTML += "<p class='comment-title'><u>Comment:</u>" + "<br>" + tweetComments[i].name + "</p>" + "<p class='comment-body>" + tweetComments[i].body + "</p>"; 
                     console.log(comments);
                 }
             } else if (this.readyState != 4) {
